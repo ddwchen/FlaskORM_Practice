@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
+    <title>C+R Users</title>
+</head>
+<body>
+    <div class="container"></div>
+        <h1>All the Users</h1>
+        <table class="column">
+            <thead>
+                <tr>
+                    <th class="column one">ID</th>
+                    <th class="columns four">Name</th>
+                    <th class="columns four">Email</th>
+                    <th class="column one">Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td class="column one">{{ user.id }}</td>
+                    <td class="columns four">{{ user.full_name() }}</td>
+                    <td class="columns four">{{ user.email }}</td>
+                    <td class="column one">{{ user.age }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        <h1>Add a User</h1>
+        <form action="create" method="POST">
+            <div>
+                <div class="column one-half">
+                    <label for="first_name" class="column one-half">First Name</label>
+                    <input type="text" name="first_name" class="column one-half">
+                </div>
+                <div class="column one-half">
+                    <label for="last_name" class="column one-half">Last Name</label>
+                    <input type="text" name="last_name" class="column one-half">
+                </div>
+            </div>
+            <div>
+                <div class="column one-half">
+                    <label for="email" class="column one-half">Email</label>
+                    <input type="text" name="email" class="column one-half">
+                </div>
+                <div class="column one-half">
+                    <label for="age" class="column one-half">Age</label>
+                    <input type="text" name="age" class="column one-half">
+                </div>
+            </div>
+            <input type="submit" value="Add" class="column one-half offset-by-three">
+        </form>
+    </div>
+</body>
+</html>
